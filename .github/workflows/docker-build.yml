@@ -6,7 +6,7 @@ on:
     paths:
       - 'hello-world-app/**'
 
-  jobs:
+jobs:
     build:
       runs-on: ubuntu-latest
       steps:
