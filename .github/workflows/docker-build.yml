@@ -22,5 +22,5 @@ on:
           run: |
             docker run -d -p 5000:5000 --name test-container hello-world-app
             sleep 5
-          curl -f http://localhost:5000 || exit 1
+            curl -f http://localhost:5000 || exit 1
 
