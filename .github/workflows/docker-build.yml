@@ -1,0 +1,29 @@
+name : Build Docker Image
+
+on:
+  push :
+    branches: [ main ]
+    path:
+      - 'hello-world-app/**'
+
+  jobs :
+    build :
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+        uses: actions/checkout#4
+
+      - name: Build Docker image
+        working-directory: ./hello-world-app
+        run: docker buil -t hello-world-app .
+
+      - name: Run container and test response
+        working-directory: ./hello-world-app
+        run: |
+          docker run -d -p 5000:5000 --name test-container hello-world-app
+          sleep 5
+        curl -f http://localhost:5000 || exit 1
+
+
+
+
